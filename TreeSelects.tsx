@@ -12,8 +12,8 @@ export const TreeSelects = (props: IFormProps) => {
   const [expandedKeys, setExpandedKeys] =
     useState<TreeSelectExpandedKeysType>();
 
-  const { label, treeOptions, placeholder } = form[attribute];
-  const { required, disabled } = form[attribute].rules;
+  const { label, treeOptions, placeholder, filter } = form[attribute];
+  const { required, disabled, isExpand = false } = form[attribute].rules;
   const {
     control,
     formState: { errors },
@@ -32,7 +32,9 @@ export const TreeSelects = (props: IFormProps) => {
 
         setExpandedKeys(_expandedKeys);
       };
-      expandAll();
+      if (isExpand) {
+        expandAll();
+      }
     }
   }, [treeOptions]);
 
@@ -101,6 +103,7 @@ export const TreeSelects = (props: IFormProps) => {
               onToggle={(e) => setExpandedKeys(e.value)}
               defaultValue={value as string}
               onBlur={undefined}
+              filter={filter ?? true}
               disabled={disabled}
               {...moreOptions}
             ></TreeSelect>
