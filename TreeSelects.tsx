@@ -1,11 +1,11 @@
-import { Controller, useFormContext } from 'react-hook-form';
-import { TreeSelect, TreeSelectExpandedKeysType } from 'primereact/treeselect';
-import { useEffect, useState } from 'react';
-import { inputValidator } from '../../../../library/utilities/helperFunction';
-import { FormFieldError } from '../formFieldError/FormFieldError';
-import { IFormProps } from '../formInterface/forms.model';
-import { useTranslation } from 'react-i18next';
-import { IFormFieldType } from '../../../../library/utilities/constant';
+import { Controller, useFormContext } from "react-hook-form";
+import { TreeSelect, TreeSelectExpandedKeysType } from "primereact/treeselect";
+import { useEffect, useState } from "react";
+import { inputValidator } from "../../../../library/utilities/helperFunction";
+import { FormFieldError } from "../formFieldError/FormFieldError";
+import { IFormProps } from "../formInterface/forms.model";
+import { useTranslation } from "react-i18next";
+import { IFormFieldType } from "../../../../library/utilities/constant";
 
 export const TreeSelects = (props: IFormProps) => {
   const { attribute, form, fieldType, moreOptions } = props;
@@ -19,7 +19,7 @@ export const TreeSelects = (props: IFormProps) => {
     formState: { errors },
   } = useFormContext();
   const { t } = useTranslation();
-  const defaultPlaceHolder: string = t('components.select.placeholder');
+  const defaultPlaceHolder: string = t("components.select.placeholder");
 
   useEffect(() => {
     if (treeOptions) {
@@ -47,25 +47,25 @@ export const TreeSelects = (props: IFormProps) => {
   };
 
   const getClassNames = () => {
-    let labelClassName = '';
-    let fieldClassName = '';
-    let divClassName = '';
+    let labelClassName = "";
+    let fieldClassName = "";
+    let divClassName = "";
 
     switch (fieldType) {
       case IFormFieldType.NO_LABEL:
-        labelClassName = '';
-        fieldClassName = 'field p-fluid';
-        divClassName = '';
+        labelClassName = "";
+        fieldClassName = "field p-fluid";
+        divClassName = "";
         break;
       case IFormFieldType.TOP_LABEL:
-        labelClassName = '';
-        fieldClassName = 'field p-fluid';
-        divClassName = '';
+        labelClassName = "";
+        fieldClassName = "field p-fluid";
+        divClassName = "";
         break;
       default:
-        labelClassName = 'col-12 mb-3 md:col-3 md:mb-0';
-        fieldClassName = 'field grid';
-        divClassName = 'col-12 md:col-9 relative';
+        labelClassName = "col-12 mb-3 md:col-3 md:mb-0";
+        fieldClassName = "field grid";
+        divClassName = "col-12 md:col-9 relative";
         break;
     }
 
@@ -75,7 +75,7 @@ export const TreeSelects = (props: IFormProps) => {
 
   const labelElement = (
     <label htmlFor={attribute} className={labelClassName}>
-      {label} {required && '*'}
+      {label} {required && "*"}
     </label>
   );
 
@@ -100,7 +100,7 @@ export const TreeSelects = (props: IFormProps) => {
               expandedKeys={expandedKeys}
               onToggle={(e) => setExpandedKeys(e.value)}
               defaultValue={value as string}
-              onBlur={false}
+              onBlur={undefined}
               disabled={disabled}
               {...moreOptions}
             ></TreeSelect>
