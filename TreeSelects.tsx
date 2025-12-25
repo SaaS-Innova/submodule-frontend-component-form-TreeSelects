@@ -8,7 +8,14 @@ import { useTranslation } from "react-i18next";
 import { IFormFieldType } from "../../../../library/utilities/constant";
 
 export const TreeSelects = (props: IFormProps) => {
-  const { attribute, form, fieldType, moreOptions } = props;
+  const {
+    attribute,
+    form,
+    fieldType,
+    moreOptions,
+    isSetCustomIcon = false,
+    customIcon,
+  } = props;
   const [expandedKeys, setExpandedKeys] =
     useState<TreeSelectExpandedKeysType>();
 
@@ -99,6 +106,7 @@ export const TreeSelects = (props: IFormProps) => {
               filter={filter ?? true}
               disabled={disabled}
               {...moreOptions}
+              dropdownIcon={isSetCustomIcon && customIcon}
             ></TreeSelect>
           )}
         />
