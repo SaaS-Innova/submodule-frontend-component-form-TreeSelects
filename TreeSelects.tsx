@@ -3,7 +3,6 @@ import { TreeSelect, TreeSelectExpandedKeysType } from "primereact/treeselect";
 import { useEffect, useState, useMemo } from "react";
 import { inputValidator } from "../../../../library/utilities/helperFunction";
 import { FormFieldError } from "../formFieldError/FormFieldError";
-import { IFormProps } from "../formInterface/forms.model";
 import { useTranslation } from "react-i18next";
 import { IFormFieldType } from "../../../../library/utilities/constant";
 import { Checkbox } from "primereact/checkbox";
