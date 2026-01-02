@@ -7,6 +7,7 @@ import { IFormProps } from "../formInterface/forms.model";
 import { useTranslation } from "react-i18next";
 import { IFormFieldType } from "../../../../library/utilities/constant";
 import { Checkbox } from "primereact/checkbox";
+import { ITreeSelects } from "./TreeSelects.model";
 /** -------------------------
  * Helpers
  * --------------------------*/
@@ -70,7 +71,7 @@ const toggleNodeChecked = (
 /** -------------------------
  * Component
  * --------------------------*/
-export const TreeSelects = (props: IFormProps) => {
+export const TreeSelects = (props: ITreeSelects) => {
   const { attribute, form, fieldType, moreOptions, showMarkAllHeader } = props;
   const [expandedKeys, setExpandedKeys] =
     useState<TreeSelectExpandedKeysType>();
@@ -166,7 +167,18 @@ export const TreeSelects = (props: IFormProps) => {
             const itemTemplate = (node: any) => {
               const checked = isNodeChecked(value, node.key);
               return (
-                <div className="flex align-items-center gap-2 w-full">
+                <div
+                  className="flex align-items-center gap-2 w-full"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const next = toggleNodeChecked(
+                      node,
+                      (value || {}) as SelectionKeys,
+                      !checked
+                    );
+                    onChange(next);
+                  }}
+                >
                   <Checkbox
                     checked={checked}
                     onClick={(e) => e.stopPropagation()}
